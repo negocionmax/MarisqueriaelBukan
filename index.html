@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marisquería "El Bukan" | Mariscos y Micheladas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0077be;
+            --sand-yellow: #f4d03f;
+            --deep-sea: #003366;
+            --coral-red: #ff6f61;
+            --foam-white: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--foam-white );
+            color: var(--deep-sea);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80' );
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .overlay {
+            background: rgba(255, 255, 255, 0.92);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 119, 190, 0.85));
+            color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shrimp-deco {
+            position: absolute;
+            font-size: 3.5rem;
+            opacity: 0.3;
+            color: var(--coral-red);
+            animation: swim 12s infinite linear;
+        }
+
+        @keyframes swim {
+            from { transform: translateX(-100%) rotate(0deg); }
+            to { transform: translateX(100vw) rotate(20deg); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+
+        nav {
+            background: var(--deep-sea);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.1);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            background: var(--sand-yellow);
+            color: var(--deep-sea);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+            border-bottom: 8px solid var(--sand-yellow);
+            position: relative;
+        }
+
+        .welcome-section h2 {
+            color: var(--ocean-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border-top: 6px solid var(--ocean-blue);
+            transition: 0.3s;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .menu-category h3 {
+            color: var(--ocean-blue);
+            border-bottom: 3px solid var(--sand-yellow);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.6rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: #777;
+            font-style: italic;
+        }
+
+        .price {
+            font-weight: 800;
+            color: var(--coral-red);
+            font-size: 1.1rem;
+            margin-left: 10px;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
+            background: var(--deep-sea);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+        }
+
+        .info-card h4 {
+            color: var(--sand-yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--sand-yellow);
+            transform: scale(1.2);
+        }
+
+        .btn-contact {
+            display: inline-block;
+            background: var(--sand-yellow);
+            color: var(--deep-sea);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            margin-top: 1.5rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .btn-contact:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .tagline { font-size: 1.2rem; }
+            nav { gap: 0.8rem; }
+            nav a { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <i class="fas fa-shrimp shrimp-deco" style="top: 15%; left: 10%;"></i>
+            <i class="fas fa-shrimp shrimp-deco" style="top: 60%; left: 75%; animation-delay: 3s;"></i>
+            <h1>Marisquería "El Bukan"</h1>
+            <p class="tagline">Mariscos, Micheladas y el mejor sabor del mar</p>
+        </header>
+
+        <nav>
+            <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#menu"><i class="fas fa-utensils"></i> Menú</a>
+            <a href="#ubicacion"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+            <a href="#contacto"><i class="fas fa-phone"></i> Contacto</a>
+        </nav>
+
+        <div class="container">
+            <section id="inicio" class="welcome-section">
+                <h2>¡Bienvenidos!</h2>
+                <p style="font-size: 1.3rem; color: #444; max-width: 800px; margin: 0 auto 2rem;">
+                    “Pescados y Mariscos de la mejor calidad, con un excelente sabor y al mejor precio...  
+  
+
+                    <strong>¡Conócenos! *No somos los únicos pero somos los mejores”</strong>
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:5559639955" class="btn-contact">
+                        <i class="fas fa-phone"></i> Llamar: 55 5963 9955
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=C.+9+167,+Jardines+de+Santa+Clara,+55450+Ecatepec+de+Morelos,+Méx." target="_blank" class="btn-contact" style="background: var(--ocean-blue ); color: white;">
+                        <i class="fas fa-map-marker-alt"></i> Cómo llegar
+                    </a>
+                </div>
+            </section>
+
+            <section id="menu">
+                <h2 style="text-align: center; margin-bottom: 3rem; color: var(--deep-sea); font-size: 3rem; text-transform: uppercase;">Nuestro Menú</h2>
+                
+                <div class="menu-grid">
+                    <!-- 1. ENTRADAS -->
+                    <div class="menu-category">
+                        <h3><i class="fas fa-fish"></i> Entradas</h3>
+                        <div class="menu-item">
+                            <span class="item-name">Pescaditos</span>
+                            <span class="price">$20</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <span class="item-name">Pescaditas (Orden de 3)</span>
+                                <span class="item-desc">Quesadillas de pescado</span>
+                            </div>
+                            <span class="price">$30</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <span class="item-name">Empanadas</span>
+                                <span class="item-desc">Camarón, pescado o calamar</span>
+                            </div>
+                            <span class="price">$30</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Tostada de Camarón</span>
+                            <span class="price">$70</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. COCTELES -->
+                    <div class="menu-category">
+                        <h3><i class="fas fa-cocktail"></i> Cocteles</h3>
+                        <p style="margin-bottom: 15px; font-weight: bold; color: #666;">Camarón u Ostión:</p>
+                        <div class="menu-item"><span>Chico</span><span class="price">$70</span></div>
+                        <div class="menu-item"><span>Mediano</span><span class="price">$100</span></div>
+                        <div class="menu-item"><span>Grande</span><span class="price">$130</span></div>
+                        <div class="menu-item"><span>Vuelve a la vida</span><span class="price">$150</span></div>
+                    </div>
+
+                    <!-- 3. CALDOS -->
+                    <div class="menu-category">
+                        <h3><i class="fas fa-bowl-rice"></i> Caldos</h3>
+                        <div class="menu-item"><span>Caldo de camarón</span><span class="price">$100</span></div>
+                        <div class="menu-item"><span>Caldo de pescado</span><span class="price">$100</span></div>
+                        <div class="menu-item"><span>Caldo campechano</span><span class="price">$100</span></div>
+                    </div>
+
+                    <!-- 4. CEVICHE -->
+                    <div class="menu-category">
+                        <h3><i class="fas fa-lemon"></i> Ceviche</h3>
+                        <div class="menu-item"><span>De pescado (Plato)</span><span class="price">$60</span></div>
+                        <div class="menu-item"><span>De calamar (Plato)</span><span class="price">$60</span></div>
+                        <div class="menu-item"><span>En tostada</span><span class="price">$40</span></div>
+                        <div class="menu-item"><span>Ceviche de caracol</span><span class="price">$60</span></div>
+                    </div>
+
+                    <!-- 5. ESPECIALIDADES -->
+                    <div class="menu-category">
+                        <h3><i class="fas fa-star"></i> Especialidades</h3>
+                        <div class="menu-item"><span>Pulpo a la diabla o al mojo</span><span class="price">$180</span></div>
+                        <div class="menu-item"><span>Camarones empanizados</span><span class="price">$160</span></div>
+                        <div class="menu-item"><span>Camarones a la diabla</span><span class="price">$160</span></div>
+                        <div class="menu-item"><span>Camarones Especiales</span><span class="price">$180</span></div>
+                        <div class="menu-item"><span>Mojarra frita</span><span class="price">$160</span></div>
+                        <div class="menu-item"><span>Mojarra al mojo o a la diabla</span><span class="price">$170</span></div>
+                        <div class="menu-item"><span>Filete empanizado, mojo o diabla</span><span class="price">$130</span></div>
+                        <p style="margin-top: 15px; font-size: 0.9rem; font-style: italic; color: #888; border-top: 1px solid #eee; pt: 10px;">
+                            *Acompañadas con arroz y ensalada de la casa.
+                        </p>
+                    </div>
+
+                    <!-- 6. BEBIDAS -->
+                    <div class="menu-category">
+                        <h3><i class="fas fa-beer"></i> Bebidas</h3>
+                        <div class="menu-item"><span>Refrescos</span><span class="price">$20</span></div>
+                        <div class="menu-item"><span>Cerveza Mega</span><span class="price">$45</span></div>
+                        <div class="menu-item"><span>Michelada</span><span class="price">$60</span></div>
+                        <div class="menu-item"><span>Michelada Clamato</span><span class="price">$70</span></div>
+                        <div class="menu-item"><span>Michelada Ostión o Camarón</span><span class="price">$110</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ubicacion" class="info-section">
+                <div class="info-card">
+                    <h4><i class="fas fa-clock"></i> Horarios</h4>
+                    <p><strong>Domingo:</strong> 11:00 AM - 6:00 PM</p>
+                    <p><strong>Lunes a Jueves:</strong> Cerrado</p>
+                    <p><strong>Viernes:</strong> 11:00 AM - 6:00 PM</p>
+                    <p><strong>Sábado:</strong> 11:00 AM - 6:00 PM</p>
+                </div>
+
+                <div id="contacto" class="info-card">
+                    <h4><i class="fas fa-address-book"></i> Contacto</h4>
+                    <p><i class="fas fa-phone"></i> Tel: 55 5963 9955</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/marisqueriaelbukan?igsh=MTcxbjZ3czQwZGd0aA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1BUGf6Fwnp/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h4><i class="fas fa-map-marked-alt"></i> Ubicación</h4>
+                    <p>C. 9 167, Jardines de Santa Clara, 55450 Ecatepec de Morelos, Méx.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=C.+9+167,+Jardines+de+Santa+Clara,+55450+Ecatepec+de+Morelos,+Méx." target="_blank" style="color: var(--sand-yellow ); text-decoration: none; font-weight: bold; display: block; margin-top: 10px;">
+                        <i class="fas fa-external-link-alt"></i> Abrir en Google Maps
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Marisquería "El Bukan". Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
